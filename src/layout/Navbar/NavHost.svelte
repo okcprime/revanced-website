@@ -16,19 +16,23 @@
 
 	const client = useQueryClient();
 
+	function reload() {
+		location.reload();
+	}
+
 	function clear_and_reload() {
 		client.clear();
 		// `client.clear()` does technically do this for us, but it takes a while.
 		localStorage.clear();
 
-		location.reload();
+		reload();
 	}
 
 	let url = settings.api_base_url();
 
 	function save() {
 		settings.set_api_base_url(url);
-		clear_and_reload();
+		reload();
 	}
 
 	function reset() {
@@ -130,7 +134,7 @@
 	</div>
 
 	<svelte:fragment slot="buttons">
-		<Button type="text" on:click={clear_and_reload} label="Clear Cache Button">Clear cache</Button>
+		<Button type="text" on:click={clear_and_reload} label="Reset Button">Reset</Button>
 		<Button type="text" on:click={save} label="Save Button">Save</Button>
 	</svelte:fragment>
 </Modal>
