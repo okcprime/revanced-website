@@ -4,13 +4,13 @@
 	import { createQuery } from '@tanstack/svelte-query';
 	import Query from '$lib/components/Query.svelte';
 
-	const query = createQuery(['socials'], queries.socials);
+	const aboutQuery = createQuery(['about'], queries.about);
 </script>
 
 <div class="social-host">
-	<Query {query} let:data>
+	<Query query={aboutQuery} let:data>
 		{#if data}
-			{#each data.socials.filter((s) => s.name != 'Website') as social}
+			{#each data.about.socials.filter((s) => s.name != 'Website') as social}
 				<SocialButton {social} />
 			{/each}
 		{/if}
@@ -23,16 +23,12 @@
 		padding: 0 max(6.5%, calc(50vw - 50rem));
 		align-items: center;
 		user-select: none;
-		position: absolute;
 		display: flex;
-		bottom: 2rem;
 		gap: 1rem;
-		left: 0;
 	}
 
 	@media screen and (max-width: 767px) {
 		.social-host {
-			left: 0;
 			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
