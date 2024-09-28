@@ -1,0 +1,10 @@
+frontend:
+    path: .
+    publish: dist
+    scripts:
+        build: npm run build
+        deploy: npm install
+    subdomain: revanced-website
+name: revanced-website
+region: eu-central-1
+yamlVersion: 2
